@@ -1,7 +1,7 @@
 import { clearForm, toggleForm } from "./form"
 // import "./submit"
 import "./database"
-import { createStuff, getDb, initDb } from "./database"
+import { createStuff, getDb, initDb, deleteDb } from "./database"
 import { fetchCards } from "./cards"
 
 // Import CSS
@@ -16,6 +16,14 @@ import Logo from "../images/cageBunny.jpeg"
 import Bear from "../images/bear.png"
 import Dog from "../images/dog.png"
 
+
+window.deleteCard = (e) => {
+    let id = parseInt(e.id)
+    // Delete the card
+    deleteDb(id)
+    // Reload the DOM
+    fetchCards()
+}
 
 window.addEventListener('load', function() {
     initDb()
@@ -59,4 +67,7 @@ window.addEventListener('load', function() {
   toggleForm();
   // Reload the DOM
   fetchCards();
+
+
+
   });

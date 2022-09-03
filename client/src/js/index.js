@@ -15,8 +15,6 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Logo from "../images/cageBunny.jpeg"
 import Bear from "../images/bear.png"
 import Dog from "../images/dog.png"
-import Unused from "../images/unused-image.png"
-
 
 window.deleteCard = (e) => {
     let id = parseInt(e.id)

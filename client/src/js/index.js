@@ -15,6 +15,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Logo from "../images/cageBunny.jpeg"
 import Bear from "../images/bear.png"
 import Dog from "../images/dog.png"
+import Unused from "../images/unused-image.png"
 
 
 window.deleteCard = (e) => {
@@ -96,3 +97,11 @@ window.addEventListener('load', function() {
 
 
   });
+
+  // register the service worker
+  if ('serviceWorker' in navigator) {
+    // Use the window load event to keep the page load performant
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+    })
+  }

@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WorkboxPlugin = require('workbox-webpack-plugin')
 
 module.exports = {
     entry: './src/js/index.js',
@@ -35,6 +36,19 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './index.html',
             title: 'Webpack Plugin',
+        }),
+        new WorkboxPlugin.GenerateSW({
+            exclude: [/\.(?:png|jpg|jpeg|svg)$/],
+            runtimeCaching: [{
+                urlPattern: [/\.(?:png|jpg|jpeg|svg)$/],
+                handler: "CacheFirst",
+                options: {
+                    cacheName: 'images',
+                    expiration: {
+                        maxEntries: 5
+                    }, 
+                },
+            }],
         })
     ]
 }
